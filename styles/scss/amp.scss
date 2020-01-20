@@ -1,0 +1,351 @@
+/*============================================================================
+  [replace with theme name] | Built with Slate
+    - You cannot use native CSS/Sass @imports in this file without a build script
+==============================================================================*/
+
+/*================ UTILS ================*/
+/*==============================================================================
+  #Custom Mixins
+=================================================================================*/
+$small: 480px;
+$medium: 768px;
+$large: 769px;
+$larger: 960px;
+$xlarge: 1400px;
+
+body {
+  background-color: #000;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: $small) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (max-width: $medium) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: $large) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "larger" {
+    @media (min-width: $larger) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "xlarge" {
+    @media (min-width: $xlarge) {
+      @content;
+    }
+  }
+  @else {
+    @media ($breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > video,
+  > iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin vertical-alignment {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50.1%);
+  -ms-transform: translateY(-50.1%);
+  transform: translateY(-50.1%);
+  padding: 18px 0;
+}
+
+@mixin background-size($cover) {
+  -webkit-background-size: $cover;
+  -moz-background-size: $cover;
+  -ms-background-size: $cover;
+  -o-background-size: $cover;
+  background-size: $cover;
+}
+.back-cover { @include background-size(cover); }
+
+@mixin circle-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+.circle-shadow-xs { @include circle-shadow(1px 2px rgba(0,0,0,0.15)); }
+.circle-shadow-sm { @include circle-shadow(2px 4px rgba(0, 0, 0, 0.5)); }
+.circle-shadow-md { @include circle-shadow(4px 6px rgba(0, 0, 0, 0.5)); }
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+.box-shadow-xs { @include box-shadow(0px 1px 2px rgba(0, 0, 0, 0.15)); }
+.box-shadow-sm { @include box-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); }
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.border-rad-sm { @include border-radius(2px); }
+.border-rad-md { @include border-radius(4px); }
+.border-rad-lg { @include border-radius(6px); }
+
+@mixin transition($speed) {
+  -webkit-transition: $speed;
+  -moz-transition: $speed;
+  -ms-transition: $speed;
+  -o-transition: $speed;
+  transition: $speed;
+}
+.transition-very-fast { @include transition(all .15s); }
+.transition-fast { @include transition(all .35s); }
+
+// Sizing variables
+$siteWidth: 1200px;
+$gutter: 16px;
+$gridGutter: 16px;
+
+/*============================================================================
+  #Sass Mixins
+==============================================================================*/
+.clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both; }
+  *zoom: 1;
+}
+
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: table;
+    clear: both; }
+  *zoom: 1;
+}
+
+/*============================================================================
+  #Grid Setup
+    - Based on csswizardry grid, but with floated columns, a fixed gutter size, and BEM classes
+    - Breakpoints defined above, under #Breakpoint and Grid Variables
+    - Note the inclusion of .grid-uniform to take care of clearfixes on evenly sized grid items
+==============================================================================*/
+$responsive:         true;
+$mobile-first:       true;
+$use-silent-classes: false;
+$push:               true;
+$pull:               true;
+
+/* Force clearfix on grids */
+.grid,
+.grid-uniform {
+  @include clearfix;
+}
+
+/* Manual grid__item clearfix */
+.grid__item.clear {
+  clear: both;
+}
+
+$class-type: unquote(".");
+
+@if $use-silent-classes == true {
+  $class-type: unquote("%");
+}
+
+@mixin grid-media-query($media-query) {
+  $breakpoint-found: false;
+
+  @each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $declaration: nth($breakpoint, 2);
+
+    @if $media-query == $name and $declaration {
+      $breakpoint-found: true;
+
+      @media only screen and #{$declaration} {
+        @content;
+      }
+    }
+  }
+
+  @if $breakpoint-found == false {
+    @warn "Breakpoint '#{$media-query}' does not exist";
+  }
+}
+
+
+/*============================================================================
+  Drop relative positioning into silent classes which can't take advantage of
+  the `[class*="push--"]` and `[class*="pull--"]` selectors.
+==============================================================================*/
+@mixin silent-relative() {
+  @if $use-silent-classes == true {
+    position:relative;
+  }
+}
+
+/*============================================================================
+  Grid Setup
+    1. Allow the grid system to be used on lists.
+    2. Remove any margins and paddings that might affect the grid system.
+    3. Apply a negative `margin-left` to negate the columns' gutters.
+==============================================================================*/
+#{$class-type}grid,
+#{$class-type}grid-uniform {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -$gridGutter;
+  margin-right: -$gridGutter;
+  @include respond-to('medium'){
+    margin-left: -$gridGutter / 2;
+    margin-right: -$gridGutter / 2;
+  }
+}
+
+#{$class-type}grid__item {
+  box-sizing: border-box;
+  float: left;
+  min-height: 1px;
+  padding-left: $gridGutter;
+  padding-right: $gridGutter;
+  vertical-align: top;
+  @if $mobile-first == true {
+    width: 100%;
+  }
+  @include respond-to('medium'){
+    padding-left: $gridGutter / 2;
+    padding-right: $gridGutter / 2;
+  }
+}
+
+/*============================================================================
+  Reversed grids allow you to structure your source in the opposite
+  order to how your rendered layout will appear.
+==============================================================================*/
+#{$class-type}grid--rev {
+  @extend #{$class-type}grid;
+  direction: rtl;
+  text-align: left;
+
+  > #{$class-type}grid__item {
+    direction: ltr;
+    text-align: left;
+    float: right;
+  }
+}
+
+/* Gutterless grids have all the properties of regular grids, minus any spacing. */
+#{$class-type}grid--full {
+  @extend #{$class-type}grid;
+  margin-left: 0;
+
+  > #{$class-type}grid__item {
+    padding-left: 0;
+  }
+}
+
+
+// Mobile Menu
+#MobileMenu {
+  background: #fff;
+  width: 100%;
+  .site-nav--mobile {
+    .icon-fallback-text {
+      .icon {
+        font-size: 1.7rem;
+        position: relative;
+        top: 16px;
+        color: #4d4d4d
+      }
+    }
+  }
+
+  .grid__item {
+    padding-right: 0;
+  }
+
+  .nav-open {
+    width: 32px;
+    height: 30px;
+    top: 32px;
+    right: -22px;
+    transform: translate(0, 50%);
+
+    .inner, .inner::before, .inner::after {
+      background-color: #4d4d4d;
+      content: "";
+      display: block;
+      height: 2px;
+      width: 21px;
+    }
+
+    .inner {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &::before {
+        margin-top: -7px;
+        position: absolute;
+      }
+
+      &::after {
+        margin-top: 7px;
+        position: absolute;
+      }
+    }
+  }
+
+  .nav-open.nav-close {
+    .inner {
+      background-color: transparent;
+      left: 54%;
+
+      &::before, &::after {
+        transform: rotate(45deg);
+        transform-origin: 0 50%;
+        width: 21px;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
