@@ -71,6 +71,77 @@ export default function NavDrawer({ children }) {
         amp-sidebar section h3:focus {
           outline-color: #fff;
         }
+        
+        .mobile-nav--container {
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            width: 100%;
+            transform: translateZ(0);
+            -moz-transform: translatez(0);
+            -ms-transform: translatez(0);
+            -o-transform: translatez(0);
+            -webkit-transform: translateZ(0);
+            -webkit-font-smoothing: antialiased
+        }
+        
+        .mobile-nav--container #search-bar form.opened {
+            position: absolute
+        }
+        
+        #mobile-nav li {
+            list-style: none
+        }
+        
+        #mobile-nav li .mobile-nav-arrow {
+            height: 12px;
+            position: absolute;
+            right: 16px;
+            transform: rotate(-90deg);
+            transition: all 0.6s
+        }
+        
+        #mobile-nav li .mobile-nav-account-arrow {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #333;
+            transition: all 0.6s
+        }
+        
+        #mobile-nav li.open-drawer .mobile-nav-arrow {
+            transform: rotate(90deg)
+        }
+        
+        #mobile-nav li.open-drawer .mobile-nav-account-arrow {
+            transform: rotate(180deg)
+        }
+        
+        #mobile-nav>li>ul {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.6s
+        }
+        
+        #mobile-nav>li>ul>li>ul {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.6s
+        }
+        
+        #mobile-nav>li>ul>li.open-drawer>ul {
+            max-height: 1000px;
+            opacity: 1
+        }
+        
+        #mobile-nav>li.open-drawer>ul {
+            max-height: 1000px;
+            opacity: 1
+        }
       `}</style>
     </div>
   )

@@ -14,6 +14,12 @@ export default function Layout({ children }) {
         </div>
       </main>
       <Footer/>
+      <style jsx global>{`
+        .main-content {
+          margin-top: 87px;
+          position: relative;
+        }
+      `}</style>
     </>
   )
 }
