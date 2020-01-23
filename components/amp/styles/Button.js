@@ -187,7 +187,99 @@ export default function Button({ children }) {
             color: #333
         }
         
+        button {
+            overflow: visible
+        }
         
+        button[disabled],
+        html input[disabled] {
+            cursor: default
+        }
+        
+        .btn,
+        .btn--secondary,
+        .rte .btn--secondary,
+        .btn-main,
+        .rte .btn-main {
+            display: inline-block;
+            padding: 12px 20px;
+            width: auto;
+            margin: 0;
+            line-height: 100%;
+            text-decoration: none;
+            text-transform: uppercase;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid transparent;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #333;
+            color: #fff
+        }
+        
+        .btn:active,
+        .btn--secondary:active,
+        .btn:focus,
+        .btn--secondary:focus,
+        .btn-main:active,
+        .btn-main:focus,
+        .rte .btn-main:active,
+        .rte .btn-main:focus {
+            background-color: #ed3376;
+            color: #fff
+        }
+        
+        .btn[disabled],
+        [disabled].btn--secondary,
+        .btn.disabled,
+        .disabled.btn--secondary,
+        .btn-main[disabled],
+        .btn-main.disabled,
+        .rte .btn-main[disabled],
+        .rte .btn-main.disabled {
+            cursor: default;
+            color: #b6b6b6;
+            background-color: #f6f6f6
+        }
+        
+        .btn--secondary,
+        .rte .btn--secondary {
+            background-color: #ed3376
+        }
+        
+        .btn--secondary:hover,
+        .rte .btn--secondary:hover {
+            background-color: #da135b;
+            color: #fff
+        }
+        
+        .btn--secondary:active,
+        .btn--secondary:focus,
+        .rte .btn--secondary:active,
+        .rte .btn--secondary:focus {
+            background-color: #ab0f47;
+            color: #fff
+        }
+        
+        .btn--small {
+            padding: 4px 5px;
+            font-size: 0.85714em
+        }
+        
+        .btn--large {
+            padding: 12px 15px;
+            font-size: 1.14286em
+        }
+        
+        .btn--full {
+            width: 100%
+        }
       `}</style>
     </>
   )

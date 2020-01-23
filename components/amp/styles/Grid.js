@@ -2,13 +2,6 @@ export default function Grid({ children }) {
   return (
     <>
       <style jsx global>{`
-        .grid,
-        .grid--rev,
-        .grid--full,
-        .grid-uniform {
-            *zoom: 1
-        }
-        
         .grid:after,
         .grid--rev:after,
         .grid--full:after,
