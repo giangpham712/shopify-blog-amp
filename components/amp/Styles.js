@@ -444,7 +444,6 @@ export default function Layout({ children }) {
         }
         
         .clearfix {
-            *zoom: 1
         }
         
         .clearfix:after {
@@ -1094,402 +1093,6 @@ export default function Layout({ children }) {
             left: 91.666%
         }
         
-        @media only screen and (min-width: 481px) and (max-width: 768px) {
-            .push--medium--one-whole {
-                left: 100%
-            }
-            .push--medium--one-half {
-                left: 50%
-            }
-            .push--medium--one-third {
-                left: 33.333%
-            }
-            .push--medium--two-thirds {
-                left: 66.666%
-            }
-            .push--medium--one-quarter {
-                left: 25%
-            }
-            .push--medium--two-quarters {
-                left: 50%
-            }
-            .push--medium--three-quarters {
-                left: 75%
-            }
-            .push--medium--one-fifth {
-                left: 20%
-            }
-            .push--medium--two-fifths {
-                left: 40%
-            }
-            .push--medium--three-fifths {
-                left: 60%
-            }
-            .push--medium--four-fifths {
-                left: 80%
-            }
-            .push--medium--one-sixth {
-                left: 16.666%
-            }
-            .push--medium--two-sixths {
-                left: 33.333%
-            }
-            .push--medium--three-sixths {
-                left: 50%
-            }
-            .push--medium--four-sixths {
-                left: 66.666%
-            }
-            .push--medium--five-sixths {
-                left: 83.333%
-            }
-            .push--medium--one-eighth {
-                left: 12.5%
-            }
-            .push--medium--two-eighths {
-                left: 25%
-            }
-            .push--medium--three-eighths {
-                left: 37.5%
-            }
-            .push--medium--four-eighths {
-                left: 50%
-            }
-            .push--medium--five-eighths {
-                left: 62.5%
-            }
-            .push--medium--six-eighths {
-                left: 75%
-            }
-            .push--medium--seven-eighths {
-                left: 87.5%
-            }
-            .push--medium--one-tenth {
-                left: 10%
-            }
-            .push--medium--two-tenths {
-                left: 20%
-            }
-            .push--medium--three-tenths {
-                left: 30%
-            }
-            .push--medium--four-tenths {
-                left: 40%
-            }
-            .push--medium--five-tenths {
-                left: 50%
-            }
-            .push--medium--six-tenths {
-                left: 60%
-            }
-            .push--medium--seven-tenths {
-                left: 70%
-            }
-            .push--medium--eight-tenths {
-                left: 80%
-            }
-            .push--medium--nine-tenths {
-                left: 90%
-            }
-            .push--medium--one-twelfth {
-                left: 8.333%
-            }
-            .push--medium--two-twelfths {
-                left: 16.666%
-            }
-            .push--medium--three-twelfths {
-                left: 25%
-            }
-            .push--medium--four-twelfths {
-                left: 33.333%
-            }
-            .push--medium--five-twelfths {
-                left: 41.666%
-            }
-            .push--medium--six-twelfths {
-                left: 50%
-            }
-            .push--medium--seven-twelfths {
-                left: 58.333%
-            }
-            .push--medium--eight-twelfths {
-                left: 66.666%
-            }
-            .push--medium--nine-twelfths {
-                left: 75%
-            }
-            .push--medium--ten-twelfths {
-                left: 83.333%
-            }
-            .push--medium--eleven-twelfths {
-                left: 91.666%
-            }
-        }
-        
-        @media only screen and (max-width: 768px) {
-            .push--medium-down--one-whole {
-                left: 100%
-            }
-            .push--medium-down--one-half {
-                left: 50%
-            }
-            .push--medium-down--one-third {
-                left: 33.333%
-            }
-            .push--medium-down--two-thirds {
-                left: 66.666%
-            }
-            .push--medium-down--one-quarter {
-                left: 25%
-            }
-            .push--medium-down--two-quarters {
-                left: 50%
-            }
-            .push--medium-down--three-quarters {
-                left: 75%
-            }
-            .push--medium-down--one-fifth {
-                left: 20%
-            }
-            .push--medium-down--two-fifths {
-                left: 40%
-            }
-            .push--medium-down--three-fifths {
-                left: 60%
-            }
-            .push--medium-down--four-fifths {
-                left: 80%
-            }
-            .push--medium-down--one-sixth {
-                left: 16.666%
-            }
-            .push--medium-down--two-sixths {
-                left: 33.333%
-            }
-            .push--medium-down--three-sixths {
-                left: 50%
-            }
-            .push--medium-down--four-sixths {
-                left: 66.666%
-            }
-            .push--medium-down--five-sixths {
-                left: 83.333%
-            }
-            .push--medium-down--one-eighth {
-                left: 12.5%
-            }
-            .push--medium-down--two-eighths {
-                left: 25%
-            }
-            .push--medium-down--three-eighths {
-                left: 37.5%
-            }
-            .push--medium-down--four-eighths {
-                left: 50%
-            }
-            .push--medium-down--five-eighths {
-                left: 62.5%
-            }
-            .push--medium-down--six-eighths {
-                left: 75%
-            }
-            .push--medium-down--seven-eighths {
-                left: 87.5%
-            }
-            .push--medium-down--one-tenth {
-                left: 10%
-            }
-            .push--medium-down--two-tenths {
-                left: 20%
-            }
-            .push--medium-down--three-tenths {
-                left: 30%
-            }
-            .push--medium-down--four-tenths {
-                left: 40%
-            }
-            .push--medium-down--five-tenths {
-                left: 50%
-            }
-            .push--medium-down--six-tenths {
-                left: 60%
-            }
-            .push--medium-down--seven-tenths {
-                left: 70%
-            }
-            .push--medium-down--eight-tenths {
-                left: 80%
-            }
-            .push--medium-down--nine-tenths {
-                left: 90%
-            }
-            .push--medium-down--one-twelfth {
-                left: 8.333%
-            }
-            .push--medium-down--two-twelfths {
-                left: 16.666%
-            }
-            .push--medium-down--three-twelfths {
-                left: 25%
-            }
-            .push--medium-down--four-twelfths {
-                left: 33.333%
-            }
-            .push--medium-down--five-twelfths {
-                left: 41.666%
-            }
-            .push--medium-down--six-twelfths {
-                left: 50%
-            }
-            .push--medium-down--seven-twelfths {
-                left: 58.333%
-            }
-            .push--medium-down--eight-twelfths {
-                left: 66.666%
-            }
-            .push--medium-down--nine-twelfths {
-                left: 75%
-            }
-            .push--medium-down--ten-twelfths {
-                left: 83.333%
-            }
-            .push--medium-down--eleven-twelfths {
-                left: 91.666%
-            }
-        }
-        
-        @media only screen and (min-width: 769px) {
-            .push--large--one-whole {
-                left: 100%
-            }
-            .push--large--one-half {
-                left: 50%
-            }
-            .push--large--one-third {
-                left: 33.333%
-            }
-            .push--large--two-thirds {
-                left: 66.666%
-            }
-            .push--large--one-quarter {
-                left: 25%
-            }
-            .push--large--two-quarters {
-                left: 50%
-            }
-            .push--large--three-quarters {
-                left: 75%
-            }
-            .push--large--one-fifth {
-                left: 20%
-            }
-            .push--large--two-fifths {
-                left: 40%
-            }
-            .push--large--three-fifths {
-                left: 60%
-            }
-            .push--large--four-fifths {
-                left: 80%
-            }
-            .push--large--one-sixth {
-                left: 16.666%
-            }
-            .push--large--two-sixths {
-                left: 33.333%
-            }
-            .push--large--three-sixths {
-                left: 50%
-            }
-            .push--large--four-sixths {
-                left: 66.666%
-            }
-            .push--large--five-sixths {
-                left: 83.333%
-            }
-            .push--large--one-eighth {
-                left: 12.5%
-            }
-            .push--large--two-eighths {
-                left: 25%
-            }
-            .push--large--three-eighths {
-                left: 37.5%
-            }
-            .push--large--four-eighths {
-                left: 50%
-            }
-            .push--large--five-eighths {
-                left: 62.5%
-            }
-            .push--large--six-eighths {
-                left: 75%
-            }
-            .push--large--seven-eighths {
-                left: 87.5%
-            }
-            .push--large--one-tenth {
-                left: 10%
-            }
-            .push--large--two-tenths {
-                left: 20%
-            }
-            .push--large--three-tenths {
-                left: 30%
-            }
-            .push--large--four-tenths {
-                left: 40%
-            }
-            .push--large--five-tenths {
-                left: 50%
-            }
-            .push--large--six-tenths {
-                left: 60%
-            }
-            .push--large--seven-tenths {
-                left: 70%
-            }
-            .push--large--eight-tenths {
-                left: 80%
-            }
-            .push--large--nine-tenths {
-                left: 90%
-            }
-            .push--large--one-twelfth {
-                left: 8.333%
-            }
-            .push--large--two-twelfths {
-                left: 16.666%
-            }
-            .push--large--three-twelfths {
-                left: 25%
-            }
-            .push--large--four-twelfths {
-                left: 33.333%
-            }
-            .push--large--five-twelfths {
-                left: 41.666%
-            }
-            .push--large--six-twelfths {
-                left: 50%
-            }
-            .push--large--seven-twelfths {
-                left: 58.333%
-            }
-            .push--large--eight-twelfths {
-                left: 66.666%
-            }
-            .push--large--nine-twelfths {
-                left: 75%
-            }
-            .push--large--ten-twelfths {
-                left: 83.333%
-            }
-            .push--large--eleven-twelfths {
-                left: 91.666%
-            }
-        }
-        
         [class*="pull--"] {
             position: relative
         }
@@ -1679,7 +1282,6 @@ export default function Layout({ children }) {
         }
         
         .wrapper {
-            *zoom: 1;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 16px
@@ -1724,18 +1326,6 @@ export default function Layout({ children }) {
             -webkit-transform: translateZ(0);
             will-change: transform;
             transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1)
-        }
-        
-        .js-drawer-open-left .is-moved-by-drawer__mobilemenu {
-            -ms-transform: translateX(0);
-            -webkit-transform: translateX(0);
-            transform: translateX(0)
-        }
-        
-        .js-drawer-open-right .is-moved-by-drawer__mobilemenu {
-            -ms-transform: translateX(0);
-            -webkit-transform: translateX(0);
-            transform: translateX(0)
         }
         
         .display-table {
@@ -2318,28 +1908,6 @@ export default function Layout({ children }) {
             border: 1px solid #e5e5e5
         }
         
-        .media,
-        .media-flex {
-            overflow: hidden;
-            _overflow: visible;
-            zoom: 1
-        }
-        
-        .media-img {
-            float: left;
-            margin-right: 16px
-        }
-        
-        .media-img-right {
-            float: right;
-            margin-left: 16px
-        }
-        
-        .media-img img,
-        .media-img-right img {
-            display: block
-        }
-        
         img {
             border: 0 none
         }
@@ -2351,23 +1919,6 @@ export default function Layout({ children }) {
         img,
         iframe {
             max-width: 100%
-        }
-        
-        .video-wrapper {
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            height: auto
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%
         }
         
         form {
@@ -2504,21 +2055,6 @@ export default function Layout({ children }) {
             cursor: pointer
         }
         
-        .ie9 select,
-        .lt-ie9 select {
-            padding-right: 10px;
-            background-image: none
-        }
-        
-        .dropdown-arrow {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/down_arrow.svg?v=767845861359929505");
-            background-repeat: no-repeat;
-            background-color: transparent
-        }
-        
         optgroup {
             font-weight: bold
         }
@@ -2539,16 +2075,6 @@ export default function Layout({ children }) {
             margin-bottom: 0;
             overflow: hidden;
             clip: rect(1px, 1px, 1px, 1px)
-        }
-        
-        .ie9 .hidden-label,
-        .lt-ie9 .hidden-label {
-            position: static;
-            height: auto;
-            width: auto;
-            margin-bottom: 2px;
-            overflow: visible;
-            clip: initial
         }
         
         label[for] {
@@ -2577,59 +2103,6 @@ export default function Layout({ children }) {
         
         label.error {
             color: #d02e2e
-        }
-        
-        .input-group {
-            position: relative;
-            display: table;
-            border-collapse: separate
-        }
-        
-        .input-group .input-group-field:first-child,
-        .input-group .input-group-btn:first-child,
-        .input-group .input-group-btn:first-child>.btn,
-        .input-group .input-group-btn:first-child>.btn--secondary,
-        .input-group input[type="hidden"]:first-child+.input-group-field,
-        .input-group input[type="hidden"]:first-child+.input-group-btn>.btn,
-        .input-group input[type="hidden"]:first-child+.input-group-btn>.btn--secondary {
-            border-radius: 4px 0 0 4px
-        }
-        
-        .input-group .input-group-field:last-child,
-        .input-group .input-group-btn:last-child>.btn,
-        .input-group .input-group-btn:last-child>.btn--secondary {
-            border-radius: 0 4px 4px 0
-        }
-        
-        .input-group input::-moz-focus-inner {
-            border: 0;
-            padding: 0;
-            margin-top: -1px;
-            margin-bottom: -1px
-        }
-        
-        .input-group-field,
-        .input-group-btn {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 0
-        }
-        
-        .input-group .btn,
-        .input-group .btn--secondary,
-        .input-group .input-group-field {
-            height: 37px
-        }
-        
-        .input-group .input-group-field {
-            width: 100%
-        }
-        
-        .input-group-btn {
-            position: relative;
-            white-space: nowrap;
-            width: 1%;
-            padding: 0
         }
         
         .icon-fallback-text .icon {
@@ -5661,31 +5134,6 @@ export default function Layout({ children }) {
         .bundle-carousel>.grid__item {
             padding-left: 2%;
             padding-right: 2%
-        }
-        
-        .upsell-checkbox {
-            width: 20px;
-            height: 20px;
-            display: inline-block;
-            margin: 0 auto;
-            border: 2px solid #333;
-            background: #fff;
-            background: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/white_checkmark.svg?v=15108749163341302806") no-repeat center center;
-            background-size: auto;
-            -webkit-transition: background-color 0.3s;
-            -moz-transition: background-color 0.3s;
-            -o-transition: background-color 0.3s;
-            transition: background-color 0.3s
-        }
-        
-        .upsell-checkbox.shipping-checkbox {
-            width: 14px;
-            height: 14px;
-            background-color: #5cb85c;
-            border-color: #5cb85c;
-            border-width: 1px;
-            padding: 7px;
-            vertical-align: text-top
         }
         
         @media (min-width: 769px) {

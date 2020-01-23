@@ -11,11 +11,10 @@ export default function Header({ children }) {
           <div className="grid--full no-m-v-gutter">
             <div className="grid__item one-sixth" >
               <div className="site-nav--mobile">
-                <a href="#" className="nav-open site-nav__link js-drawer-open-left"
-                   aria-controls="NavDrawer" aria-expanded="false" role="button" on="tap:mobile-nav.toggle" >
+                <button className="nav-open site-nav__link" on="tap:mobile-nav.toggle" >
                   <div className="inner"></div>
                   <span className="off-screen icon-fallback-text">Mobile Menu</span>
-                </a>
+                </button>
               </div>
             </div>
             <div className="grid__item one-sixth site-nav--mobile">&nbsp;</div>
