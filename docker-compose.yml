@@ -25,7 +25,7 @@ services:
       - dbdata:/data/db
     networks:
       - app-network
-    command: mongod --bind_ip 127.0.0.1,168.61.186.87
+    command: ["--bind_ip_all"]
 
 networks:
   app-network:
