@@ -17,12 +17,12 @@ services:
   mongo:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=DB_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=DB_PASSWORD
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
     ports:
       - "27017:27017"
     volumes:
-      - db-data:/data/db
+      - mongo-data:/data/db
     networks:
       - app-network
     command: ["--bind_ip_all"]
@@ -32,4 +32,4 @@ networks:
     driver: bridge
 
 volumes:
-  db-data:
+  mongo-data:
