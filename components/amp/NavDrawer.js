@@ -1,9 +1,10 @@
 import React from "react";
 import Head from "next/head";
+import NavArrow from "./NavArrow";
 
-const sidebarMenuItems = [
+const menuItems = [
   { label: 'Best Sellers', children: [ { label: 'View All', url: '' }, { label: 'New', url: '' }, { label: 'Best Sellers', url: '' }, { label: 'Award Winners', url: '' } ] },
-  { label: 'Fruit Pigmented® Makeup', children: [ { label: 'View All', url: '' }, { label: 'Face', url: '' }, { label: 'Eye', url: '' } ] },
+  { label: 'Fruit Pigmented® Makeup', children: [ { label: 'View All', url: '' }, { label: 'Face', url: '', children: [ { label: 'View All' }] }, { label: 'Eye', url: '' } ] },
   { label: 'Skin Care', children: [] },
   { label: 'Hair & Body', children: [] },
   { label: 'Specials', children: [] },
@@ -21,24 +22,35 @@ export default function NavDrawer({ children }) {
       <amp-sidebar id="mobile-nav" layout="nodisplay" side="left" className="p-t p-h">
         <button on="tap:mobile-nav.close" tabIndex="0" className="close-sidebar">✕</button>
         <amp-accordion animate="" disable-session-states="">
-          {sidebarMenuItems.map((item, index) => {
+          {menuItems.map((item, index) => {
             return (
               <section key={index} className="b-b">
-                <h3 className="callout_text text-u-c p-v-md block p-l dorp-trigger-l1 pos-rlt">
+                <h3 className="callout_text text-u-c p-v-md block p-l">
                   {item.label}
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 100 100" version="1.1" className="mobile-nav-arrow"
-                       style={{fill: "#333333"}}>
-                    <title>Arrow</title>
-                    <path
-                      d="M75.1381537,0.977907097 C73.1518375,-1.18705996 71.1513372,0.561802247 68.5006408,3.11952341 L25.5001802,46.7154203 C23.4999399,48.7786289 23.4999399,52.1115044 25.5001802,54.1747131 L66.3985766,96.5939141 C68.911699,99.1861506 70.3551659,101.445471 72.8682883,98.8532345 C75.3814107,96.260998 73.2456257,94.8096508 70.7325033,92.2174143 L30.2031971,50.4450667 L72.8682883,7.60666778 C75.387313,4.97536461 77.1244698,3.14287415 75.1381537,0.977907097 Z"/>
-                  </svg>
+                  <NavArrow/>
                 </h3>
-                <div className="o-f-hid no-margin-v m-h-sm">
+                <amp-accordion className="nested-accordion no-margin-v m-h-sm" animate="">
                   {item.children.map((child, idx) => {
-                    return <h3 key={idx}><a className="p-v-sm m-b-sm block p-l callout_text text-u-c">{child.label}</a></h3>
+                    if (child.children && child.children.length > 0)
+                      return (
+                        <section key={idx}>
+                          <h3 className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.label}</h3>
+                          <div className="no-margin-v m-h-sm">
+                          {child.children.map(grandChild => (
+                              <h3><a className="caption_text p-v-sm m-b-sm block p-l">{grandChild.label}</a></h3>
+                            ))}
+                          </div>
+                        </section>
+                      );
+
+                    return (
+                      <section key={idx}>
+                        <h3><a className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.label}</a></h3>
+                        <div className=""></div>
+                      </section>
+                    )
                   })}
-                </div>
+                </amp-accordion>
               </section>
             );
             }
@@ -94,7 +106,6 @@ export default function NavDrawer({ children }) {
         }
         
         .mobile-nav--container {
-            position: fixed;
             z-index: 9999;
             top: 0;
             left: 0;

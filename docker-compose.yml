@@ -10,3 +10,26 @@ services:
       - SHOPIFY_API_SECRET_KEY
       - DB_URI
       - DB_NAME
+    networks:
+      - app-network
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=DB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=DB_PASSWORD
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - app-network
+    command: mongod --bind_ip 127.0.0.1,168.61.186.87
+
+  networks:
+    app-network:
+      driver: bridge
+
+  volumes:
+    dbdata:

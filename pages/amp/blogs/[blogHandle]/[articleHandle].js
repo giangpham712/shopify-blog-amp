@@ -22,6 +22,7 @@ const Index = props => {
     <Layout>
       <Head>
         <title>{props.article.title}</title>
+        <link rel="canonical" href={props.canonicalUrl} />
       </Head>
       <article className="grid__item large--one-whole">
         <header className="blog-header section-header">
@@ -42,6 +43,7 @@ Index.getInitialProps = async function({ query: { blogHandle, articleHandle } })
   const res = await fetch(`http://localhost:3000/api/blogs/${blogHandle}/${articleHandle}`);
   const data = await res.json();
   return {
+    canonicalUrl: `https://www.100percentpure.com/blogs/${blogHandle}/${articleHandle}`,
     article: humps.camelizeKeys(data)
   };
 };
