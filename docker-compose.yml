@@ -22,7 +22,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - dbdata:/data/db
+      - db-data:/data/db
     networks:
       - app-network
     command: ["--bind_ip_all"]
@@ -32,4 +32,4 @@ networks:
     driver: bridge
 
 volumes:
-  dbdata:
+  db-data:
