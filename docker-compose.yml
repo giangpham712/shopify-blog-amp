@@ -27,9 +27,9 @@ services:
       - app-network
     command: mongod --bind_ip 127.0.0.1,168.61.186.87
 
-  networks:
-    app-network:
-      driver: bridge
+networks:
+  app-network:
+    driver: bridge
 
-  volumes:
-    dbdata:
+volumes:
+  dbdata:
