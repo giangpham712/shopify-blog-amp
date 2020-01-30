@@ -2,16 +2,7 @@ import React from "react";
 import Head from "next/head";
 import NavArrow from "./NavArrow";
 
-const menuItems = [
-  { label: 'Best Sellers', children: [ { label: 'View All', url: '' }, { label: 'New', url: '' }, { label: 'Best Sellers', url: '' }, { label: 'Award Winners', url: '' } ] },
-  { label: 'Fruit Pigmented® Makeup', children: [ { label: 'View All', url: '' }, { label: 'Face', url: '', children: [ { label: 'View All' }] }, { label: 'Eye', url: '' } ] },
-  { label: 'Skin Care', children: [] },
-  { label: 'Hair & Body', children: [] },
-  { label: 'Specials', children: [] },
-  { label: 'Explore', children: [] },
-];
-
-export default function NavDrawer({ children }) {
+const NavDrawer = ({menuItems}) => {
   return (
     <div id={"NavDrawer"}>
       <Head>
@@ -26,18 +17,18 @@ export default function NavDrawer({ children }) {
             return (
               <section key={index} className="b-b">
                 <h3 className="callout_text text-u-c p-v-md block p-l">
-                  {item.label}
+                  {item.title}
                   <NavArrow/>
                 </h3>
                 <amp-accordion className="nested-accordion no-margin-v m-h-sm" animate="">
-                  {item.children.map((child, idx) => {
-                    if (child.children && child.children.length > 0)
+                  {item.links.map((child, idx) => {
+                    if (child.links && child.links.length > 0)
                       return (
                         <section key={idx}>
-                          <h3 className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.label}</h3>
+                          <h3 className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</h3>
                           <div className="no-margin-v m-h-sm">
-                          {child.children.map(grandChild => (
-                              <h3><a className="caption_text p-v-sm m-b-sm block p-l">{grandChild.label}</a></h3>
+                          {child.links.map(grandChild => (
+                              <h3><a href={grandChild.url} className="caption_text p-v-sm m-b-sm block p-l">{grandChild.title}</a></h3>
                             ))}
                           </div>
                         </section>
@@ -45,7 +36,7 @@ export default function NavDrawer({ children }) {
 
                     return (
                       <section key={idx}>
-                        <h3><a className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.label}</a></h3>
+                        <h3><a href={child.url} className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</a></h3>
                         <div className=""></div>
                       </section>
                     )
@@ -181,4 +172,6 @@ export default function NavDrawer({ children }) {
       `}</style>
     </div>
   )
-}
+};
+
+export default NavDrawer;

@@ -19,7 +19,7 @@ const Index = props => {
   const body = convertHtml(props.article.bodyHtml);
 
   return (
-    <Layout>
+    <Layout menuItems={props.menuItems}>
       <Head>
         <title>{props.article.title}</title>
         <link rel="canonical" href={props.canonicalUrl} />
@@ -38,13 +38,26 @@ const Index = props => {
   )
 };
 
-Index.getInitialProps = async function({ query: { blogHandle, articleHandle } }) {
+const getNavigation = async (handle) => {
+  const res = await fetch(`http://localhost:3000/api/navigations/${handle}`);
+  const data = await res.json();
+  return humps.camelizeKeys(data);
+};
 
+const getArticle = async (blogHandle, articleHandle) => {
   const res = await fetch(`http://localhost:3000/api/blogs/${blogHandle}/${articleHandle}`);
   const data = await res.json();
+  return humps.camelizeKeys(data);
+};
+
+Index.getInitialProps = async function({ query: { blogHandle, articleHandle } }) {
+  const mainMenu = await getNavigation('main-menu');
+  const article = await getArticle(blogHandle, articleHandle);
+
   return {
     canonicalUrl: `https://www.100percentpure.com/blogs/${blogHandle}/${articleHandle}`,
-    article: humps.camelizeKeys(data)
+    article,
+    menuItems: mainMenu.links
   };
 };
 

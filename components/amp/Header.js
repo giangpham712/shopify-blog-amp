@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import NavDrawer from "./NavDrawer";
 import Logo from "./Logo";
+import fetch from "isomorphic-unfetch";
+import humps from "humps";
+import Index from "../../pages/amp/blogs/[blogHandle]/[articleHandle]";
 
-export default function Header({ children }) {
+const Header = ({ children, menuItems }) => {
   return (
     <>
       <Head></Head>
@@ -26,7 +29,7 @@ export default function Header({ children }) {
           </div>
         </div>
       </div>
-      <NavDrawer />
+      <NavDrawer menuItems={menuItems}/>
       {children}
       <style jsx global>{`
         #MobileMenu {
@@ -100,4 +103,6 @@ export default function Header({ children }) {
       `}</style>
     </>
   )
-}
+};
+
+export default Header;
