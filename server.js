@@ -36,7 +36,7 @@ app.prepare().then(() => {
 
   // Unprotected middleware
   server.use(async (ctx, next) => {
-    if (ctx.url.match(/^\/amp/)) {
+    if (ctx.url.match(/^\/amp/) || ctx.url.match(/^\/api/)) {
       await handle(ctx.req, ctx.res);
       ctx.respond = false;
       ctx.res.statusCode = 200;
@@ -45,11 +45,10 @@ app.prepare().then(() => {
     }
   });
 
-  /*
   server.use(verifyRequest( {
-
+    authRoute: '/shopify/auth',
+    fallbackRoute: '/shopify/auth',
   }));
-  */
 
   // Protected middleware
   server.use(async (ctx) => {
