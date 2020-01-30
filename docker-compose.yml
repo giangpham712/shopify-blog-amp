@@ -22,7 +22,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongodata:/data/db
     networks:
       - app-network
     command: ["--bind_ip_all"]
@@ -32,4 +32,4 @@ networks:
     driver: bridge
 
 volumes:
-  mongo-data:
+  mongodata:
