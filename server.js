@@ -45,13 +45,10 @@ app.prepare().then(() => {
     }
   });
 
-  /*
   server.use(verifyRequest( {
     authRoute: '/shopify/auth',
     fallbackRoute: '/shopify/auth',
   }));
-
-   */
 
   // Protected middleware
   server.use(async (ctx) => {
