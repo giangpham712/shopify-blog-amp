@@ -21,21 +21,21 @@ const NavDrawer = ({menuItems}) => {
                   <NavArrow/>
                 </h3>
                 <amp-accordion className="nested-accordion no-margin-v m-h-sm" animate="">
-                  {item.links.map((child, idx) => {
+                  {item.links.map((child, childIndex) => {
                     if (child.links && child.links.length > 0)
                       return (
-                        <section key={idx}>
+                        <section key={childIndex}>
                           <h3 className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</h3>
                           <div className="no-margin-v m-h-sm">
-                          {child.links.map(grandChild => (
-                              <h3><a href={grandChild.url} className="caption_text p-v-sm m-b-sm block p-l">{grandChild.title}</a></h3>
+                          {child.links.map((grandChild, grandChildIndex) => (
+                              <h3 key={grandChildIndex}><a href={grandChild.url} className="caption_text p-v-sm m-b-sm block p-l">{grandChild.title}</a></h3>
                             ))}
                           </div>
                         </section>
                       );
 
                     return (
-                      <section key={idx}>
+                      <section key={childIndex}>
                         <h3><a href={child.url} className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</a></h3>
                         <div className=""></div>
                       </section>

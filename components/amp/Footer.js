@@ -1,4 +1,4 @@
-export default function Footer({ children }) {
+export default function Footer({ children, navigations }) {
   return (
     <>
       <section id="Footer">
@@ -6,41 +6,20 @@ export default function Footer({ children }) {
           <div className="wrapper m-t-xlg">
             <div className="grid__item">
               <div className="grid">
-                <div className="grid__item one-half m-b-md">
-                  <h3>company</h3>
-                  <ul>
-                    <li><a href={"/pages/about-us"} title="">About 100% PURE®</a></li>
-                    <li><a href={"/pages/philanthropy"} title="">Philanthropy</a></li>
-                    <li><a href={"/pages/careers"} title="">Careers</a></li>
-                    <li><a href={"/pages/press"} title="">Press</a></li>
-                    <li><a href={"/pages/store-locations"} title="">Store Locations</a></li>
-                    <li><a href="https://wus.100percentpure.com/" title="">Wholesale US</a></li>
-                    <li><a href="https://wca.100percentpure.com/" title="">Wholesale CA</a></li>
-                    <li><a href="https://www.100percentpure.com/blogs/feed#cover" title="">Our Blog</a></li>
-                  </ul>
-                </div>
-                <div className="grid__item one-half m-b-md">
-                  <h3>information</h3>
-                  <ul>
-                    <li><a rel="nofollow" href="https://100percentpure.returnly.com/" title="">Start a Return</a></li>
-                    <li><a href="https://support.100percentpure.com/" title="">Contact Us</a></li>
-                    <li><a href={"/pages/affiliates"} title="">Affiliate Program</a></li>
-                    <li><a href="/pages/shipping-faq" title="">Shipping FAQ</a></li>
-                    <li><a href="/pages/afterpay" title="">Afterpay FAQ</a></li>
-                    <li><a href="/pages/purist-perks" title="">Purist Perks</a></li>
-                    <li><a href="/pages/purist-pro" title="">Purist Pro</a></li>
-                    <li><a href="https://www.100percentpure.com/pages/share?traffic_source=site_footer" title="">Refer a Friend</a></li>
-                  </ul>
-                </div>
-                <div className="grid__item one-half m-b-md">
-                  <h3>featured</h3>
-                  <ul>
-                    <li><a href={"/collections/new"} title="">New Products</a></li>
-                    <li><a href={"/collections/best-sellers"} title="">Best Sellers</a></li>
-                    <li><a href={"/products/online-gift-card"} title="">Online Gift Card</a></li>
-                    <li><a href={"/pages/student-discount"} title="">Student Discount</a></li>
-                  </ul>
-                </div>
+                {navigations && navigations.map(navigation => {
+                  return (
+                    <div key={navigation.handle} className="grid__item one-half m-b-md">
+                      <h3>{navigation.title}</h3>
+                      <ul>
+                        {navigation.links && navigation.links.map((link, index) => {
+                          return (
+                            <li key={index}><a href={link.url} title={link.title}>{link.title}</a></li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )
+                })}
                 <div className="grid__item small--one-half medium--one-third large--one-quarter m-b-md">
                   <h3>Subscribe</h3>
                 </div>

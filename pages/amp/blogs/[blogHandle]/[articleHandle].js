@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import * as _ from 'lodash';
 import humps from 'humps';
 import { useAmp } from 'next/amp'
 import Layout from '~/components/amp/Layout'
@@ -19,7 +20,7 @@ const Index = props => {
   const body = convertHtml(props.article.bodyHtml);
 
   return (
-    <Layout menuItems={props.menuItems}>
+    <Layout navigations={props.navigations}>
       <Head>
         <title>{props.article.title}</title>
         <link rel="canonical" href={props.canonicalUrl} />
@@ -38,8 +39,8 @@ const Index = props => {
   )
 };
 
-const getNavigation = async (handle) => {
-  const res = await fetch(`http://localhost:3000/api/navigations/${handle}`);
+const getNavigations = async () => {
+  const res = await fetch('http://localhost:3000/api/navigations');
   const data = await res.json();
   return humps.camelizeKeys(data);
 };
@@ -51,13 +52,13 @@ const getArticle = async (blogHandle, articleHandle) => {
 };
 
 Index.getInitialProps = async function({ query: { blogHandle, articleHandle } }) {
-  const mainMenu = await getNavigation('main-menu');
+  const navigations = await getNavigations();
   const article = await getArticle(blogHandle, articleHandle);
 
   return {
     canonicalUrl: `https://www.100percentpure.com/blogs/${blogHandle}/${articleHandle}`,
     article,
-    menuItems: mainMenu.links
+    navigations
   };
 };
 

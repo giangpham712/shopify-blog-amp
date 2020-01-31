@@ -5,7 +5,7 @@ import fetch from "isomorphic-unfetch";
 import humps from "humps";
 import Index from "../../pages/amp/blogs/[blogHandle]/[articleHandle]";
 
-const Header = ({ children, menuItems }) => {
+const Header = ({ children, mainMenu }) => {
   return (
     <>
       <Head></Head>
@@ -29,7 +29,7 @@ const Header = ({ children, menuItems }) => {
           </div>
         </div>
       </div>
-      <NavDrawer menuItems={menuItems}/>
+      <NavDrawer menuItems={mainMenu.links}/>
       {children}
       <style jsx global>{`
         #MobileMenu {
