@@ -5,6 +5,7 @@ import { useAmp } from 'next/amp'
 import Layout from '~/components/amp/Layout'
 
 import fetch from 'isomorphic-unfetch';
+import React from 'react';
 
 export const config = {
   amp: true,
