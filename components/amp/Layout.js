@@ -19,7 +19,7 @@ export default function Layout({ children, navigations }) {
         <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"/>
         <amp-analytics type="googleanalytics" id="analytics-ga">
           <script type="application/json">
-            {
+            {`
               {
                 "vars": {
                 "account":"UA-1450425-1"
@@ -31,16 +31,16 @@ export default function Layout({ children, navigations }) {
                   }
                 }
               }
-            }
+            `}
           </script>
         </amp-analytics>
         <amp-analytics type="facebookpixel" id="facebook-pixel">
-          <script type="application/json">
-            {
+          <script type="application/json" >
+            {`
               "vars": {
                 "pixelId":"1038798819518133"
               }
-            }
+            `}
           </script>
         </amp-analytics>
       </Head>
