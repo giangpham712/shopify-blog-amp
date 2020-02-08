@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import NavDrawer from "./NavDrawer";
 import Logo from "./Logo";
-import fetch from "isomorphic-unfetch";
-import humps from "humps";
-import Index from "../../pages/amp/blogs/[blogHandle]/[articleHandle]";
 
 const Header = ({ children, mainMenu }) => {
+  const mainMenuLinks = mainMenu ? mainMenu.links : [];
   return (
     <>
       <Head></Head>
@@ -29,7 +27,7 @@ const Header = ({ children, mainMenu }) => {
           </div>
         </div>
       </div>
-      <NavDrawer menuItems={mainMenu.links}/>
+      <NavDrawer menuItems={mainMenuLinks}/>
       {children}
       <style jsx global>{`
         #MobileMenu {

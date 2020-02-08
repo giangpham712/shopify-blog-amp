@@ -7,9 +7,7 @@ import Layout from '~/components/amp/Layout'
 import fetch from 'isomorphic-unfetch';
 import React from 'react';
 
-export const config = {
-  amp: true,
-};
+export const config = { amp: true };
 
 const convertHtml = (html) => {
   return html.replace(/<img(.*?)\/?>/g, '<amp-img width="2600" height="1500" layout="responsive" $1></amp-img>');

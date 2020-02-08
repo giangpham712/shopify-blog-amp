@@ -13,10 +13,10 @@ const NavDrawer = ({menuItems}) => {
       <amp-sidebar id="mobile-nav" layout="nodisplay" side="left" className="p-t p-h">
         <button on="tap:mobile-nav.close" tabIndex="0" className="close-sidebar">✕</button>
         <amp-accordion animate="" disable-session-states="">
-          {menuItems.map((item, index) => {
+          {menuItems && menuItems.map((item, index) => {
             return (
               <section key={index} className="b-b">
-                <h3 className="callout_text text-u-c p-v-md block p-l">
+                <h3 className="nav-item-text callout_text text-u-c p-v-md block p-l">
                   {item.title}
                   <NavArrow/>
                 </h3>
@@ -25,10 +25,10 @@ const NavDrawer = ({menuItems}) => {
                     if (child.links && child.links.length > 0)
                       return (
                         <section key={childIndex}>
-                          <h3 className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</h3>
+                          <h3 className="nav-item-text callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</h3>
                           <div className="no-margin-v m-h-sm">
                           {child.links.map((grandChild, grandChildIndex) => (
-                              <h3 key={grandChildIndex}><a href={grandChild.url} className="caption_text p-v-sm m-b-sm block p-l">{grandChild.title}</a></h3>
+                              <h3 key={grandChildIndex}><a href={grandChild.url} className="caption_text p-v-sm block p-l">{grandChild.title}</a></h3>
                             ))}
                           </div>
                         </section>
@@ -36,7 +36,7 @@ const NavDrawer = ({menuItems}) => {
 
                     return (
                       <section key={childIndex}>
-                        <h3><a href={child.url} className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</a></h3>
+                        <h3 className="nav-item-text"><a href={child.url} className="callout_text text-u-c p-v-sm m-b-sm block p-l">{child.title}</a></h3>
                         <div className=""></div>
                       </section>
                     )
@@ -59,9 +59,13 @@ const NavDrawer = ({menuItems}) => {
       
         amp-sidebar,
         amp-sidebar section,
-        .i-amphtml-accordion-header {
+        amp-sidebar section h3.nav-item-text {
           background-color: #fff;
           border: none;
+        }
+        
+        amp-sidebar section h3 {
+          margin-bottom: 3.5px;
         }
         
         amp-sidebar {

@@ -54,7 +54,7 @@ export default function Blog({ children }) {
         }
         
         .blog-header {
-            margin-bottom: 0px !important
+            margin-bottom: 0px;
         }
         
         .blog-header h1,
