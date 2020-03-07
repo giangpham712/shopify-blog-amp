@@ -1,6 +1,7 @@
-import Grid from "./styles/Grid";
-import Blog from "./styles/Blog";
-import Color from "./styles/Color";
+import Grid from './styles/Grid';
+import Blog from './styles/Blog';
+import Color from './styles/Color';
+import Image from './styles/Image';
 import React from "react";
 
 export default function Layout({ children }) {
@@ -9,6 +10,7 @@ export default function Layout({ children }) {
       <Grid/>
       <Blog/>
       <Color/>
+      <Image/>
       <style jsx global>{`
         .back-cover {
             -webkit-background-size: cover;
