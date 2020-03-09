@@ -11,7 +11,7 @@ export const config = { amp: true };
 
 const convertHtml = (html) => {
   return html.replace(/<img(.*?)\/?>/g, '<div class="fixed-container"><amp-img class="contain" layout="fill" $1></amp-img></div>')
-    .replace(/<iframe.*?class="(.*?)".*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g, '<amp-youtube class="$1" data-videoid="$4" width="$2" height="$3" layout="responsive"></amp-youtube>');
+    .replace(/<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g, '<amp-youtube class="m-v" data-videoid="$3" width="$1" height="$2" layout="responsive"></amp-youtube>');
 };
 
 const Index = props => {
