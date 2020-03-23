@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import * as _ from 'lodash';
 import humps from 'humps';
+import moment from 'moment';
 import { useAmp } from 'next/amp'
 import Layout from '~/components/amp/Layout'
 
@@ -9,15 +10,54 @@ import React from 'react';
 
 export const config = { amp: true };
 
-const convertHtml = (html) => {
-  return html.replace(/<img(.*?)\/?>/g, '<div class="fixed-container"><amp-img class="contain" layout="fill" $1></amp-img></div>')
+const availableTags = {
+  'Makeup': { url: 'Makeup', title: 'Makeup' },
+  'Skin Care': { url: 'Skin-Care', title: 'Skincare' },
+  'Shopping Guides': { url: 'Shopping-Guides', title: 'Guides' },
+  'how-to': { url: 'how-to', title: 'How-To\'s' },
+  'Body': { url: 'Body', title: 'Bath, Body & Hair' },
+  'Susies Lab': { url: 'susies-lab', title: 'Behind-The-Scenes of 100% PURE' },
+};
+
+const getSocialHtml = (article) => {
+  return '<section class="grid text-center p-v-sm text-md-lg">' +
+            '<a class="icon-fallback-text no-borders inline m-h-sm">' +
+              '<span class="icon icon-facebook"></span>' +
+              '<span class="fallback-text">Facebook</span>' +
+            '</a>' +
+            '<a class="icon-fallback-text no-borders inline m-h-sm">' +
+              '<span class="icon icon-twitter"></span>' +
+              '<span class="fallback-text">Twitter</span>' +
+            '</a>' +
+            '<a class="icon-fallback-text no-borders inline m-h-sm pointer" data-pin-custom="true">' +
+              '<span class="icon icon-pinterest"></span>' +
+              '<span class="fallback-text">Pinterest</span>' +
+            '</a>' +
+            '<a class="icon-fallback-text no-borders inline m-h-sm pointer">' +
+              '<span class="icon icon-mail"></span>' +
+              '<span class="fallback-text">E-mail</span>' +
+            '</a>' +
+          '</section>';
+};
+
+const convertHtml = (article) => {
+  const tags = Object.keys(availableTags).filter(key => article.tags.includes(key)).map(key => availableTags[key]);
+  const author = article.author.replace('®', '<sup>®</sup>');
+  const html = article.bodyHtml;
+  const additionsHtml = '<div class="center-text l-s-1x main-font text-base l-h-2x">' +
+    tags.map(tag => `<a href="/blogs/feed/tagged/${tag.url}">${tag.title}</a> <span class="closer-line inline m-r-xs">//</span> `).join('') +
+    moment(article.createdAt).format('MMM D, YYYY') + ` <span class="closer-line inline m-r-xs">//</span> ${author} ` +
+    '</div>' + getSocialHtml(article);
+  return html
+    .replace(/<div class="additions"><\/div>/, `<div class="additions">${additionsHtml}</div>`)
+    .replace(/<img(.*?)\/?>/g, '<div class="fixed-container"><amp-img class="contain" layout="fill" $1></amp-img></div>')
     .replace(/<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g, '<amp-youtube class="m-v" data-videoid="$3" width="$1" height="$2" layout="responsive"></amp-youtube>');
 };
 
 const Index = props => {
   const isAmp = useAmp();
   const article = props.article;
-  const body = convertHtml(props.article.bodyHtml);
+  const body = convertHtml(article);
 
   return (
     <Layout navigations={props.navigations}>
@@ -31,9 +71,21 @@ const Index = props => {
             <h1 className="text-center ">{article.title}</h1>
           </div>
         </header>
-        <div className="blog-body">
+        <div className="blog-body supports-fontface">
           <div dangerouslySetInnerHTML={{__html: body}}/>
         </div>
+        <ul className="inline-list">
+          <li>
+            <span>Tags: </span>
+            {article.tags.split(',').map(tag => {
+              const tagUrlName = tag;
+              return (
+                <><a href={`/blogs/feed/tagged/${tagUrlName}`}>{tag.trim()}</a>, </>
+              );
+            })}
+          </li>
+        </ul>
+        <div id="related-article" className=""></div>
       </article>
     </Layout>
   )

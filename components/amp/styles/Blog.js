@@ -10,6 +10,10 @@ export default function Blog({ children }) {
             border-bottom: 0.06em solid rgba(237, 51, 118, 0.6)
         }
         
+        .blog-body a.icon-fallback-text {
+            border-bottom: 0;
+        }
+        
         .blog-body hr {
             background: #333;
             width: 150px;
@@ -27,6 +31,11 @@ export default function Blog({ children }) {
             margin-top: 10px;
             font-size: 28px;
             line-height: 32px
+        }
+        
+        .blog-body .post-date,
+        .blog-body .post-by {
+          display: none;
         }
         
         .blog-body p,
@@ -199,6 +208,35 @@ export default function Blog({ children }) {
         
         #blogSection .productGrid {
             height: auto
+        }
+        
+        .supports-fontface .icon-fallback-text .fallback-text {
+          position: absolute;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          width: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+        }
+        
+        .icon:before {
+          display: none;
+        }
+        
+        .supports-fontface .icon:before {
+          display: inline;
+          font-family: "icons";
+          text-decoration: none;
+          speak: none; // future fallback, limited in effect currently
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
         }
       `}</style>
     </>

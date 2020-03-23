@@ -1,7 +1,9 @@
+import SubscriptionForm from './SubscriptionForm';
+
 export default function Footer({ children, navigations }) {
   return (
     <>
-      <section id="Footer">
+      <section id="Footer" className="supports-fontface">
         <footer className="site-footer">
           <div className="wrapper m-t-xlg">
             <div className="grid__item">
@@ -20,8 +22,48 @@ export default function Footer({ children, navigations }) {
                     </div>
                   )
                 })}
-                <div className="grid__item small--one-half medium--one-third large--one-quarter m-b-md">
+                <div id="social-icon-block" className="grid__item small--one-half medium--one-third large--one-quarter m-b-md">
                   <h3>Subscribe</h3>
+                  <div className="m-b email-signup">
+                    <SubscriptionForm />
+                  </div>
+                  <ul>
+                    <li>
+                      <div className="icon-fallback-text">
+                        <a target="_blank" href="https://www.instagram.com/100percentpure/"><span
+                          className="icon icon-instagram"></span>
+                          <span className="fallback-text">Instagram</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="icon-fallback-text">
+                        <a target="_blank" href="https://www.facebook.com/100percentpure"><span
+                          className="icon icon-facebook"></span>
+                          <span className="fallback-text">Facebook</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="icon-fallback-text">
+                        <a target="_blank" href="https://twitter.com/100percentpure"><span
+                          className="icon icon-twitter"></span>
+                          <span className="fallback-text">Twitter</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="icon-fallback-text">
+                        <a target="_blank" href="https://www.pinterest.com/100percentpure/"><span
+                          className="icon icon-pinterest"></span>
+                          <span className="fallback-text">Pinterest</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="icon-fallback-text">
+                        <a target="_blank" href="https://www.youtube.com/channel/UCuDO-8MnXXrUFX1VkRJPCuA"><span
+                          className="icon icon-youtube"></span>
+                          <span className="fallback-text">Youtube</span></a>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

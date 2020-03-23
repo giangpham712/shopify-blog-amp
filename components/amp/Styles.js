@@ -1,6 +1,8 @@
 import Grid from './styles/Grid';
 import Blog from './styles/Blog';
 import Color from './styles/Color';
+import Button from './styles/Button';
+import Icons from './styles/Icons';
 import Image from './styles/Image';
 import React from "react";
 
@@ -8,7 +10,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Grid/>
+      <Button/>
       <Blog/>
+      <Icons/>
       <Color/>
       <Image/>
       <style jsx global>{`
@@ -1291,8 +1295,36 @@ export default function Layout({ children }) {
             color: #d02e2e
         }
         
-        .icon-fallback-text .icon {
-            display: none
+        .input-group {
+            position: relative;
+            display: table;
+            border-collapse: separate
+        }
+        
+        .input-group .input-group-field:last-child,
+        .input-group .input-group-btn:last-child>.btn,
+        .input-group .input-group-btn:last-child>.btn--secondary {
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .input-group-field,
+        .input-group-btn {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0;
+        }
+        
+        .input-group .btn,
+        .input-group .btn--secondary,
+        .input-group .input-group-field {
+            height: 37px;
+        }
+        
+        .input-group-btn {
+            position: relative;
+            white-space: nowrap;
+            width: 1%;
+            padding: 0
         }
         
         .icon:before {
@@ -2427,6 +2459,13 @@ export default function Layout({ children }) {
         
         .banner {
             margin: 20px 0 10px 0
+        }
+        
+        .btn,.btn--secondary,
+        .rte .btn--secondary {
+            color: #333;
+            background: #fff;
+            border: 1px solid #333;
         }
         
         .checkbox {

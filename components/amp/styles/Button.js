@@ -25,8 +25,8 @@ export default function Button({ children }) {
         
         .btn-primary:hover {
             color: #fff;
-            background: #ed3376 !important;
-            border: 1px solid #ed3376 !important
+            background: #ed3376;
+            border: 1px solid #ed3376;
         }
         
         .btn-default {
@@ -37,7 +37,7 @@ export default function Button({ children }) {
         }
         
         .btn-default:hover {
-            color: #ed3376 !important;
+            color: #ed3376;
             border: 0
         }
         
@@ -79,15 +79,15 @@ export default function Button({ children }) {
         }
         
         .btn-quaternary {
-            background: #ed3376 !important;
-            color: #fff !important;
-            border: 1px solid #ed3376 !important
+            background: #ed3376;
+            color: #fff;
+            border: 1px solid #ed3376
         }
         
         .btn-quaternary:hover {
-            background: #da135b !important;
-            color: #fff !important;
-            border: 1px solid #da135b !important
+            background: #da135b;
+            color: #fff;
+            border: 1px solid #da135b
         }
         
         .btn-quinary {

@@ -624,7 +624,7 @@ export default function Icons({ children }) {
         }
         
         .icon-facebook:before {
-            content: "\\66"
+            content: "${'\\'}66"
         }
         
         .icon-google:before {
