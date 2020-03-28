@@ -20,20 +20,24 @@ const availableTags = {
 };
 
 const getSocialHtml = (article) => {
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.100percentpure.com/${ article.url }`;
+  const twitterUrl = `https://twitter.com/home?status=Check out this blog post from 100%25 PURE&reg;: https://www.100percentpure.com/${ article.url }`;
+  const pinterestUrl = `https://www.pinterest.com/pin/create/button?url=https://www.100percentpure.com/${ article.url }`;
+  const emailUrl = `mailto:mailto:customerservice@puritycosmetics.com?subject=I wanted you to see this site&amp;body=Check out this site https://www.100percentpure.com/blogs/feed/${article.handle}.`;
   return '<section class="grid text-center p-v-sm text-md-lg">' +
-            '<a class="icon-fallback-text no-borders inline m-h-sm">' +
+            `<a class="icon-fallback-text no-borders inline m-h-sm" href="${facebookUrl}" target="_blank">` +
               '<span class="icon icon-facebook"></span>' +
               '<span class="fallback-text">Facebook</span>' +
             '</a>' +
-            '<a class="icon-fallback-text no-borders inline m-h-sm">' +
+            `<a class="icon-fallback-text no-borders inline m-h-sm" href="${twitterUrl}" target="_blank">` +
               '<span class="icon icon-twitter"></span>' +
               '<span class="fallback-text">Twitter</span>' +
             '</a>' +
-            '<a class="icon-fallback-text no-borders inline m-h-sm pointer" data-pin-custom="true">' +
+            `<a class="icon-fallback-text no-borders inline m-h-sm pointer" href="${pinterestUrl}" target="_blank" data-pin-custom="true">` +
               '<span class="icon icon-pinterest"></span>' +
               '<span class="fallback-text">Pinterest</span>' +
             '</a>' +
-            '<a class="icon-fallback-text no-borders inline m-h-sm pointer">' +
+            `<a class="icon-fallback-text no-borders inline m-h-sm pointer" href="${emailUrl}" target="_blank">` +
               '<span class="icon icon-mail"></span>' +
               '<span class="fallback-text">E-mail</span>' +
             '</a>' +
