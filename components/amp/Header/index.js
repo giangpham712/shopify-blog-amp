@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import NavDrawer from "./NavDrawer";
-import Logo from "./Logo";
+import NavDrawer from "../NavDrawer";
+import Logo from "../Logo";
 
-const Header = ({ children, mainMenu }) => {
+const Index = ({ children, mainMenu }) => {
   const mainMenuLinks = mainMenu ? mainMenu.links : [];
   return (
     <>
@@ -103,4 +103,4 @@ const Header = ({ children, mainMenu }) => {
   )
 };
 
-export default Header;
+export default Index;

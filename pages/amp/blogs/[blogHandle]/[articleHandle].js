@@ -7,22 +7,15 @@ import Layout from '~/components/amp/Layout'
 
 import fetch from 'isomorphic-unfetch';
 import React from 'react';
+import RelatedArticle from '../../../../components/amp/Article/RelatedArticles';
+import ShopTheStory from '../../../../components/amp/Article/ShopTheStory';
 
 export const config = { amp: true };
 
-const availableTags = {
-  'Makeup': { url: 'Makeup', title: 'Makeup' },
-  'Skin Care': { url: 'Skin-Care', title: 'Skincare' },
-  'Shopping Guides': { url: 'Shopping-Guides', title: 'Guides' },
-  'how-to': { url: 'how-to', title: 'How-To\'s' },
-  'Body': { url: 'Body', title: 'Bath, Body & Hair' },
-  'Susies Lab': { url: 'susies-lab', title: 'Behind-The-Scenes of 100% PURE' },
-};
-
 const getSocialHtml = (article) => {
-  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.100percentpure.com/${ article.url }`;
-  const twitterUrl = `https://twitter.com/home?status=Check out this blog post from 100%25 PURE&reg;: https://www.100percentpure.com/${ article.url }`;
-  const pinterestUrl = `https://www.pinterest.com/pin/create/button?url=https://www.100percentpure.com/${ article.url }`;
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.100percentpure.com/${ article.handle }`;
+  const twitterUrl = `https://twitter.com/home?status=Check out this blog post from 100%25 PURE&reg;: https://www.100percentpure.com/${ article.handle }`;
+  const pinterestUrl = `https://www.pinterest.com/pin/create/button?url=https://www.100percentpure.com/${ article.handle }`;
   const emailUrl = `mailto:mailto:customerservice@puritycosmetics.com?subject=I wanted you to see this site&amp;body=Check out this site https://www.100percentpure.com/blogs/feed/${article.handle}.`;
   return '<section class="grid text-center p-v-sm text-md-lg">' +
             `<a class="icon-fallback-text no-borders inline m-h-sm" href="${facebookUrl}" target="_blank">` +
@@ -45,7 +38,7 @@ const getSocialHtml = (article) => {
 };
 
 const convertHtml = (article) => {
-  const tags = Object.keys(availableTags).filter(key => article.tags.includes(key)).map(key => availableTags[key]);
+  const tags = article.tags;
   const author = article.author.replace('®', '<sup>®</sup>');
   const html = article.bodyHtml;
   const additionsHtml = '<div class="center-text l-s-1x main-font text-base l-h-2x">' +
@@ -58,10 +51,12 @@ const convertHtml = (article) => {
     .replace(/<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g, '<amp-youtube class="m-v" data-videoid="$3" width="$1" height="$2" layout="responsive"></amp-youtube>');
 };
 
+
 const Index = props => {
   const isAmp = useAmp();
   const article = props.article;
-  const body = convertHtml(article);
+  const tags = [];
+  const body = convertHtml(article, tags);
 
   return (
     <Layout navigations={props.navigations}>
@@ -81,15 +76,15 @@ const Index = props => {
         <ul className="inline-list">
           <li>
             <span>Tags: </span>
-            {article.tags.split(',').map(tag => {
-              const tagUrlName = tag;
+            {article.tags.map(tag => {
               return (
-                <><a href={`/blogs/feed/tagged/${tagUrlName}`}>{tag.trim()}</a>, </>
+                <><a href={`/blogs/feed/tagged/${tag.url}`} key={tag.url}>{tag.title}</a>, </>
               );
             })}
           </li>
         </ul>
-        <div id="related-article" className=""></div>
+        {article.relatedArticles && article.relatedArticles.length > 0 && <RelatedArticle article={article}/>}
+        {article.shopTheStoryProducts && article.shopTheStoryProducts.length > 0 && <ShopTheStory article={article}/>}
       </article>
     </Layout>
   )
@@ -107,14 +102,69 @@ const getArticle = async (blogHandle, articleHandle) => {
   return humps.camelizeKeys(data);
 };
 
+const getTagMappings = async (blogHandle) => {
+  const res = await fetch(`http://localhost:3000/api/blogs/${blogHandle}/tagMappings`);
+  const data = await res.json();
+  return humps.camelizeKeys(data);
+};
+
+const parseTags = (article, tagMappings) => {
+  const tagMap = _.keyBy(tagMappings, 'key');
+  return article.tags.split(',').map(tag => {
+    return tagMap[tag.trim().toLowerCase()];
+  }).filter(x => x != null);
+};
+
+const getRecentArticlesByTag = async (blogHandle, tag) => {
+  const res = await fetch(`http://localhost:3000/api/blogs/${blogHandle}/tagged/${tag}`);
+  const data = await res.json();
+  return humps.camelizeKeys(data);
+};
+
+const getProduct = async (productHandle) => {
+  const res = await fetch(`http://localhost:3000/api/products/${productHandle}`);
+  const data = await res.json();
+  return humps.camelizeKeys(data);
+};
+
 Index.getInitialProps = async function({ query: { blogHandle, articleHandle } }) {
   const navigations = await getNavigations();
   const article = await getArticle(blogHandle, articleHandle);
+  const tagMappings = await getTagMappings(blogHandle);
+
+  article.tags = parseTags(article, tagMappings);
+  article.relatedArticles = [];
+
+  for (const tag of article.tags) {
+    const articlesByTag = await getRecentArticlesByTag(blogHandle, tag.title);
+    article.relatedArticles = article.relatedArticles.concat(articlesByTag);
+  }
+
+  // Shop the blog
+  const metafield = _.find(article.metafields, { key: 'product', namespace: '100pure'});
+  const productHandles = metafield == null ? [] : metafield.value.split('|');
+
+  if (productHandles && productHandles.length > 0) {
+    const products = [];
+    for (const productHandle of productHandles) {
+      try {
+        const product = await getProduct(productHandle);
+        if (product) {
+          products.push(product);
+        }
+      } catch (e) {
+        //
+      }
+    }
+    article.shopTheStoryProducts = products;
+  }
+
+  article.relatedArticles = _.uniqBy(article.relatedArticles, 'handle');
 
   return {
     canonicalUrl: `https://www.100percentpure.com/blogs/${blogHandle}/${articleHandle}`,
     article,
-    navigations
+    navigations,
   };
 };
 

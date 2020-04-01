@@ -1,5 +1,6 @@
 require('isomorphic-fetch');
 const dotenv = require('dotenv');
+const MongoClient = require('mongodb').MongoClient;
 const Koa = require('koa');
 const next = require('next');
 const { default: createShopifyAuth } = require('@shopify/koa-shopify-auth');
@@ -16,6 +17,22 @@ const handle = app.getRequestHandler();
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 
 app.prepare().then(() => {
+
+  // Create indexes
+  const client = new MongoClient(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  client.connect((err, db) => {
+    if (err) throw err
+
+    db = client.db(process.env.DB_NAME);
+    db.collection('articles').createIndex({ tags: 1 }, (err, result) => {
+      //
+    })
+  });
+
   const server = new Koa();
   server.use(session(server));
   server.keys = [SHOPIFY_API_SECRET_KEY];

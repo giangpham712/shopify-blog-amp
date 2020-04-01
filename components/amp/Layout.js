@@ -3,7 +3,7 @@ import Head from 'next/head';
 import * as _ from 'lodash';
 
 import Styles from './Styles';
-import Header from './Header';
+import Index from './Header';
 import Footer from './Footer';
 
 export default function Layout({ children, navigations }) {
@@ -24,6 +24,7 @@ export default function Layout({ children, navigations }) {
       <Head>
         <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
         <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+        <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
         <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
       </Head>
       <amp-analytics type="googleanalytics" id="analytics-ga">
@@ -32,7 +33,7 @@ export default function Layout({ children, navigations }) {
       <amp-analytics type="facebookpixel" id="facebook-pixel">
         <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(fbPixelJson)}}></script>
       </amp-analytics>
-      <Header mainMenu={mainMenu}/>
+      <Index mainMenu={mainMenu}/>
       <main className="main-content">
         <div className="wrapper p-t-lg">
           {children}

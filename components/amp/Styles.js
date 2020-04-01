@@ -2461,13 +2461,6 @@ export default function Layout({ children }) {
             margin: 20px 0 10px 0
         }
         
-        .btn,.btn--secondary,
-        .rte .btn--secondary {
-            color: #333;
-            background: #fff;
-            border: 1px solid #333;
-        }
-        
         .checkbox {
             -webkit-appearance: checkbox 
         }

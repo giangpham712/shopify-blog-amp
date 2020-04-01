@@ -1,4 +1,8 @@
+import React from 'react';
+
 import SubscriptionForm from './SubscriptionForm';
+import Social from './Social';
+import Navigation from './Navigation';
 
 export default function Footer({ children, navigations }) {
   return (
@@ -8,66 +12,16 @@ export default function Footer({ children, navigations }) {
           <div className="wrapper m-t-xlg">
             <div className="grid__item">
               <div className="grid">
-                {navigations && navigations.map(navigation => {
-                  return (
-                    <div key={navigation.handle} className="grid__item one-half m-b-md">
-                      <h3>{navigation.title}</h3>
-                      <ul>
-                        {navigation.links && navigation.links.map((link, index) => {
-                          return (
-                            <li key={index}><a href={link.url} title={link.title}>{link.title}</a></li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )
-                })}
+                <Navigation />
                 <div id="social-icon-block" className="grid__item small--one-half medium--one-third large--one-quarter m-b-md">
                   <h3>Subscribe</h3>
                   <div className="m-b email-signup">
                     <SubscriptionForm />
                   </div>
-                  <ul>
-                    <li>
-                      <div className="icon-fallback-text">
-                        <a target="_blank" href="https://www.instagram.com/100percentpure/"><span
-                          className="icon icon-instagram"></span>
-                          <span className="fallback-text">Instagram</span></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="icon-fallback-text">
-                        <a target="_blank" href="https://www.facebook.com/100percentpure"><span
-                          className="icon icon-facebook"></span>
-                          <span className="fallback-text">Facebook</span></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="icon-fallback-text">
-                        <a target="_blank" href="https://twitter.com/100percentpure"><span
-                          className="icon icon-twitter"></span>
-                          <span className="fallback-text">Twitter</span></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="icon-fallback-text">
-                        <a target="_blank" href="https://www.pinterest.com/100percentpure/"><span
-                          className="icon icon-pinterest"></span>
-                          <span className="fallback-text">Pinterest</span></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="icon-fallback-text">
-                        <a target="_blank" href="https://www.youtube.com/channel/UCuDO-8MnXXrUFX1VkRJPCuA"><span
-                          className="icon icon-youtube"></span>
-                          <span className="fallback-text">Youtube</span></a>
-                      </div>
-                    </li>
-                  </ul>
+                  <Social />
                 </div>
               </div>
             </div>
-
           </div>
           <div id="site-selection" className="text-center m-t-lg p-v-sm">
             <ul className="no-margin">
@@ -177,6 +131,6 @@ export default function Footer({ children, navigations }) {
             border-right: none
         }
       `}</style>
-      </>
+    </>
   )
 }
