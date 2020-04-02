@@ -35,6 +35,7 @@ export default function RelatedArticle({children, article}) {
         .carousel-slide {
           width: 50%;
           height: 400px;
+          vertical-align: top;
         }
         
         .carousel-slide .fixed-container {

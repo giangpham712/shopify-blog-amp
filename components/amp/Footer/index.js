@@ -9,10 +9,13 @@ export default function Footer({ children, navigations }) {
     <>
       <section id="Footer" className="supports-fontface">
         <footer className="site-footer">
-          <div className="wrapper m-t-xlg">
+          <div className="h1 text-center">
+            Promise You'll Love™ 100% Guarantee. <a href="/pages/promise-to-love">Learn More <span className="caret-right"></span></a>
+          </div>
+          <div className="wrapper">
             <div className="grid__item">
               <div className="grid">
-                <Navigation />
+                <Navigation navigations={navigations}/>
                 <div id="social-icon-block" className="grid__item small--one-half medium--one-third large--one-quarter m-b-md">
                   <h3>Subscribe</h3>
                   <div className="m-b email-signup">
@@ -73,6 +76,10 @@ export default function Footer({ children, navigations }) {
             font-size: 12px;
             font-weight: 400;
             margin-bottom: 1.5rem
+        }
+        
+        #Footer .site-footer .wrapper {
+            margin-top: 48px;
         }
         
         #Footer .site-footer ul {
