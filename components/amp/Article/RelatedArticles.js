@@ -10,7 +10,7 @@ export default function RelatedArticle({children, article}) {
                       layout="fixed-height"
                       type="carousel">
           {article.relatedArticles.map(relatedArticle => {
-            const url = `/blogs/${article.blogHandle}/${relatedArticle.handle}`;
+            const url = `/a/amp/blogs/${article.blogHandle}/${relatedArticle.handle}`;
             return (
               <div className="carousel-slide" key={relatedArticle.handle}>
                 <a href={url}>

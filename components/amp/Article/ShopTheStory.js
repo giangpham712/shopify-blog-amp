@@ -13,6 +13,7 @@ export default function ShopTheStory({children, article}) {
             const url = `/products/${product.handle}`;
             const variant = (product.variants != null && product.variants.length > 0) ? product.variants[0] : null;
             const price = (variant != null) ? variant.price : null;
+            const shopTheStoryUrl = `/blogs/${article.blogHandle}/${article.handle}#shop-the-blog`;
 
             return (
               <div className="carousel-slide" key={product.handle}>
@@ -28,12 +29,12 @@ export default function ShopTheStory({children, article}) {
                     </a>
                   </span>
                   <div className="text-center module_title_text m-t-xs">
-                    <span className="original_price"><span className="money">£37.79 GBP</span></span>
+                    <span className="original_price"><span className="money">${price}</span></span>
                   </div>
                 </div>
                 <div className="text-center m-t-sm">
                   <div className="submit-btn-container">
-                    <a href="" className="btn btn-secondary w-full">ADD TO TOTE</a>
+                    <a href={shopTheStoryUrl} className="btn btn-secondary w-full">SHOP THE STORY</a>
                   </div>
                 </div>
               </div>
