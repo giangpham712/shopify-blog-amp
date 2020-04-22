@@ -10,10 +10,10 @@ export default function ShopTheBlog({children, article}) {
                       layout="fixed-height"
                       type="carousel">
           {article.shopTheBlogProducts.map((product, index) => {
-            const url = `/blogs/${article.blogHandle}/${article.handle}?amp-add-product=${index}#shop-the-blog`;
+            const url = `/products/${product.handle}`;
             const variant = (product.variants != null && product.variants.length > 0) ? product.variants[0] : null;
             const price = (variant != null) ? variant.price : null;
-            const shopTheBlogUrl = `/blogs/${article.blogHandle}/${article.handle}#shop-the-blog`;
+            const shopTheBlogUrl = `/blogs/${article.blogHandle}/${article.handle}?amp-add-product=${index}#shop-the-blog`;;
 
             return (
               <div className="carousel-slide" key={product.handle}>
