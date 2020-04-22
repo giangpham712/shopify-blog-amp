@@ -8,7 +8,7 @@ import Layout from '~/components/amp/Layout'
 import fetch from 'isomorphic-unfetch';
 import React from 'react';
 import RelatedArticle from '../../../../components/amp/Article/RelatedArticles';
-import ShopTheStory from '../../../../components/amp/Article/ShopTheStory';
+import ShopTheBlog from '../../../../components/amp/Article/ShopTheBlog';
 
 export const config = { amp: true };
 
@@ -84,7 +84,7 @@ const Index = props => {
           </li>
         </ul>
         {article.relatedArticles && article.relatedArticles.length > 0 && <RelatedArticle article={article}/>}
-        {article.shopTheStoryProducts && article.shopTheStoryProducts.length > 0 && <ShopTheStory article={article}/>}
+        {article.shopTheBlogProducts && article.shopTheBlogProducts.length > 0 && <ShopTheBlog  article={article}/>}
       </article>
     </Layout>
   )
@@ -141,14 +141,11 @@ Index.getInitialProps = async function({ query: { blogHandle, articleHandle } })
   }
 
   // Shop the blog
-  const metafield = _.find(article.metafields, { key: 'product', namespace: '100pure'});
-  const productHandles = metafield == null ? [] : metafield.value.split('|');
-
-  if (productHandles && productHandles.length > 0) {
-    const products = [];
-    for (const productHandle of productHandles) {
+  const products = [];
+  if (article.shopTheBlogProductIds) {
+    for (const productId of article.shopTheBlogProductIds) {
       try {
-        const product = await getProduct(productHandle);
+        const product = await getProduct(productId);
         if (product) {
           products.push(product);
         }
@@ -156,8 +153,29 @@ Index.getInitialProps = async function({ query: { blogHandle, articleHandle } })
         //
       }
     }
-    article.shopTheStoryProducts = products;
+
+  } else {
+
+    const metafield = _.find(article.metafields, {key: 'product', namespace: '100pure'});
+    const productHandles = metafield == null ? [] : metafield.value.split('|');
+
+    if (productHandles && productHandles.length > 0) {
+      const products = [];
+      for (const productHandle of productHandles) {
+        try {
+          const product = await getProduct(productHandle);
+          if (product) {
+            products.push(product);
+          }
+        } catch (e) {
+          //
+        }
+      }
+
+    }
   }
+
+  article.shopTheBlogProducts = products;
 
   article.relatedArticles = _.uniqBy(article.relatedArticles, 'handle');
 

@@ -1,11 +1,9 @@
 import { MongoClient } from 'mongodb';
-import ShopifyService from '../../../../services/ShopifyService';
 
 const client = new MongoClient(process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-const shopifyService = new ShopifyService();
 
 export default async (req, res) => {
   const {
@@ -28,8 +26,6 @@ export default async (req, res) => {
     res.status(404).json(null);
     return;
   }
-  // Get metafields
-  article.metafields = await shopifyService.getArticleMetafields(blog.id, article.id);
 
   article.blogHandle = blogHandle;
 

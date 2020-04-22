@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash'
 
-export default function ShopTheStory({children, article}) {
+export default function ShopTheBlog({children, article}) {
   return(
     <div id="shop-the-story">
       <p className="text-center text-md-lg m-t-xlg l-s-2x font-bold">SHOP THE STORY</p>
@@ -9,11 +9,11 @@ export default function ShopTheStory({children, article}) {
         <amp-carousel height="350"
                       layout="fixed-height"
                       type="carousel">
-          {article.shopTheStoryProducts.map(product => {
-            const url = `/products/${product.handle}`;
+          {article.shopTheBlogProducts.map((product, index) => {
+            const url = `/blogs/${article.blogHandle}/${article.handle}?amp-add-product=${index}#shop-the-blog`;
             const variant = (product.variants != null && product.variants.length > 0) ? product.variants[0] : null;
             const price = (variant != null) ? variant.price : null;
-            const shopTheStoryUrl = `/blogs/${article.blogHandle}/${article.handle}#shop-the-blog`;
+            const shopTheBlogUrl = `/blogs/${article.blogHandle}/${article.handle}#shop-the-blog`;
 
             return (
               <div className="carousel-slide" key={product.handle}>
@@ -34,7 +34,7 @@ export default function ShopTheStory({children, article}) {
                 </div>
                 <div className="text-center m-t-sm">
                   <div className="submit-btn-container">
-                    <a href={shopTheStoryUrl} className="btn btn-secondary w-full">SHOP THE STORY</a>
+                    <a href={shopTheBlogUrl} className="btn btn-secondary w-full">SHOP THE STORY</a>
                   </div>
                 </div>
               </div>

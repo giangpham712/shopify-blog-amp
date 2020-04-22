@@ -26,6 +26,9 @@ services:
     networks:
       - app-network
     command: ["--bind_ip_all"]
+  redis:
+    image: redis:alpine
+
 
 networks:
   app-network:

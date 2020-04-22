@@ -6,14 +6,14 @@ const client = new MongoClient(process.env.DB_URI, {
 });
 
 export default async (req, res) => {
-  const { query: { productHandle } } = req;
+  const { query: { idOrHandle } } = req;
 
   if (!client.isConnected())
     await client.connect();
 
   const db = client.db(process.env.DB_NAME);
+  const product = await db.collection('products').findOne({ $or: [{ handle: idOrHandle }, { id: parseInt(idOrHandle) }]});
 
-  const product = await db.collection('products').findOne({ handle: productHandle });
   if (product == null) {
     res.status(404).json(null);
     return;
