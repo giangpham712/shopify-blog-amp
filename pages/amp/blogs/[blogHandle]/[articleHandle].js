@@ -160,7 +160,6 @@ Index.getInitialProps = async function({ query: { blogHandle, articleHandle } })
     const productHandles = metafield == null ? [] : metafield.value.split('|');
 
     if (productHandles && productHandles.length > 0) {
-      const products = [];
       for (const productHandle of productHandles) {
         try {
           const product = await getProduct(productHandle);
