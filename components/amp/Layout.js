@@ -13,8 +13,7 @@ export default function Layout({ children, navigations }) {
   });
 
   const gaJson = {
-    vars: { account: 'UA-1450425-1' },
-    triggers: { trackPageView: { on: 'visible', request: 'pageview' } }
+    vars: { gtag_id: 'G-0LH8PDC9V6', config : { 'G-0LH8PDC9V6': { groups: 'default' } } }
   };
   const fbPixelJson = { vars: { pixelId: '1038798819518133' } };
 

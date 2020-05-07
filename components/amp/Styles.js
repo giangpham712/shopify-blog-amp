@@ -1785,10 +1785,6 @@ export default function Layout({ children }) {
             position: absolute
         }
         
-        .pos-fix {
-            position: fixed 
-        }
-        
         .pos-stc {
             position: static 
         }
