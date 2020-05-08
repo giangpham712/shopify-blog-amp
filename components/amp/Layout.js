@@ -26,7 +26,7 @@ export default function Layout({ children, navigations }) {
         <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
         <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
       </Head>
-      <amp-analytics type="googleanalytics" id="analytics-ga">
+      <amp-analytics type="gtag" data-credentials="include">
         <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(gaJson)}}></script>
       </amp-analytics>
       <amp-analytics type="facebookpixel" id="facebook-pixel">
