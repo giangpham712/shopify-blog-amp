@@ -13,7 +13,7 @@ export default function Layout({ children, navigations }) {
   });
 
   const gaJson = {
-    vars: { gtag_id: 'G-0LH8PDC9V6', config : { 'G-0LH8PDC9V6': { groups: 'default' } } }
+    vars: { gtag_id: 'G-0LH8PDC9V6', config : { 'G-0LH8PDC9V6': { groups: 'default', linker: { domains: [ '100percentpure.com', 'www.100percentpure.com' ] } } } }
   };
   const fbPixelJson = { vars: { pixelId: '1038798819518133' } };
 
