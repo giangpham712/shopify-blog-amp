@@ -13,7 +13,23 @@ export default function Layout({ children, navigations }) {
   });
 
   const gaJson = {
-    vars: { gtag_id: 'G-0LH8PDC9V6', config : { 'G-0LH8PDC9V6': { groups: 'default', linker: { domains: [ '100percentpure.com', 'www.100percentpure.com' ] } } } }
+    vars: { account: 'UA-1450425-1', linkers: { enabled: true }, triggers: { trackPageView: { on: 'visible', request: 'pageview' } } }
+  };
+  const gtagJson = {
+    vars: {
+      gtag_id: 'G-0LH8PDC9V6',
+      linker: {
+        domains: [ '100percentpure.com', 'www.100percentpure.com', 'www.google.com' ]
+      },
+      config : {
+        'G-0LH8PDC9V6': {
+          groups: 'default',
+          linker: {
+            domains: [ '100percentpure.com', 'www.100percentpure.com', 'www.google.com' ]
+          }
+        }
+      }
+    }
   };
   const fbPixelJson = { vars: { pixelId: '1038798819518133' } };
 
@@ -26,8 +42,11 @@ export default function Layout({ children, navigations }) {
         <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
         <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
       </Head>
-      <amp-analytics type="gtag" data-credentials="include">
+      <amp-analytics type="googleanalytics" id="analytics-ga">
         <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(gaJson)}}></script>
+      </amp-analytics>
+      <amp-analytics type="gtag" data-credentials="include">
+        <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(gtagJson)}}></script>
       </amp-analytics>
       <amp-analytics type="facebookpixel" id="facebook-pixel">
         <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(fbPixelJson)}}></script>
