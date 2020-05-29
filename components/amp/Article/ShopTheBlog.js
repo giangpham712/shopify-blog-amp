@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash'
+import { find, get } from 'lodash'
 
 export default function ShopTheBlog({children, article}) {
   return(
@@ -13,13 +13,19 @@ export default function ShopTheBlog({children, article}) {
             const url = `/products/${product.handle}`;
             const variant = (product.variants != null && product.variants.length > 0) ? product.variants[0] : null;
             const price = (variant != null) ? variant.price : null;
-            const shopTheBlogUrl = `/blogs/${article.blogHandle}/${article.handle}?amp-add-product=${index}#shop-the-blog`;;
+            const shopTheBlogUrl = `/blogs/${article.blogHandle}/${article.handle}?amp-add-product=${index}#shop-the-blog`;
+
+            const assetsMetafield = product.metafields && find(product.metafields, metafield => metafield.key === 'toolbox-assets');
+            const assets = assetsMetafield && JSON.parse(assetsMetafield.value);
+            const primaryImage = assets && assets.featured && find(assets.featured, asset => asset.category === 'primary');
+
+            const imageUrl = primaryImage ? primaryImage.url : get(product, 'image.src');
 
             return (
               <div className="carousel-slide" key={product.handle}>
                 <a href={url}>
                   <div className="fixed-container">
-                    <amp-img className="contain" layout="fill" src={_.get(product, 'image.src')} alt={product.title}></amp-img>
+                    <amp-img className="contain" layout="fill" src={imageUrl} alt={product.title}></amp-img>
                   </div>
                 </a>
                 <div className="product-bottom">

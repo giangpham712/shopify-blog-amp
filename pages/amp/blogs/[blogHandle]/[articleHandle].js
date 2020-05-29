@@ -63,6 +63,7 @@ const Index = props => {
       <Head>
         <title>{props.article.title}</title>
         <link rel="canonical" href={props.canonicalUrl} />
+        <link rel="shortcut icon" href="/static/favicon.ico" />
       </Head>
       <article className="grid__item large--one-whole">
         <header className="blog-header section-header">
