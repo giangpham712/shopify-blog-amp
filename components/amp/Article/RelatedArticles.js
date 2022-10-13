@@ -20,7 +20,6 @@ export default function RelatedArticle({ children, article }) {
                       layout="fill"
                       src={_.get(relatedArticle, "image.src")}
                       alt={relatedArticle.title}
-                      border="0"
                     ></amp-img>
                   </div>
                 </a>

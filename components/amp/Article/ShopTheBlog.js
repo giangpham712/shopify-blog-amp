@@ -43,7 +43,6 @@ export default function ShopTheBlog({ children, article }) {
                       layout="fill"
                       src={imageUrl}
                       alt={product.title}
-                      border="0"
                     ></amp-img>
                   </div>
                 </a>
