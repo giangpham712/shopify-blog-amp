@@ -66,7 +66,7 @@ const convertHtml = (article) => {
     )
     .replace(/border="0"/g, "")
     .replace(
-      /<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g,
+      /<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9]+)\/?.*?><\/iframe>/g,
       '<amp-youtube class="m-v" data-videoid="$3" width="$1" height="$2" layout="responsive"></amp-youtube>'
     );
 };
