@@ -64,7 +64,7 @@ const convertHtml = (article) => {
       /<img(.*?)\/?>/g,
       '<div class="fixed-container"><amp-img class="contain" layout="fill" $1></amp-img></div>'
     )
-    .replace('border="0"', "")
+    .replace(/border="0"/g, "")
     .replace(
       /<iframe.*?width="(.*?)".*?height="(.*?)".*?src="https:\/\/www\.youtube\.com\/embed\/(.*?)\/?".*?><\/iframe>/g,
       '<amp-youtube class="m-v" data-videoid="$3" width="$1" height="$2" layout="responsive"></amp-youtube>'
