@@ -28,7 +28,7 @@ app.prepare().then(() => {
     if (err) throw err
 
     db = client.db(process.env.DB_NAME);
-    db.collection('articles').createIndex({ tags: 1 }, (err, result) => {
+    db.collection('Articles').createIndex({ tags: 1 }, (err, result) => {
       //
     })
   });
