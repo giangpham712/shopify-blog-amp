@@ -12,6 +12,18 @@ import ShopTheBlog from "../../../../components/amp/Article/ShopTheBlog";
 
 export const config = { amp: true };
 
+const emptyArticle = {
+  author: '',
+  title: '',
+  bodyHtml: '',
+  handle: '',
+  createdAt: new Date().toISOString(),
+  tags: [],
+  metafields: [],
+  relatedArticles: [],
+  shopTheBlogProducts: [],
+};
+
 const getSocialHtml = (article) => {
   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.100percentpure.com/${article.handle}`;
   const twitterUrl = `https://twitter.com/home?status=Check out this blog post from 100%25 PURE&reg;: https://www.100percentpure.com/${article.handle}`;
@@ -131,7 +143,7 @@ const getArticle = async (blogHandle, articleHandle) => {
     `http://localhost:3000/api/blogs/${blogHandle}/${articleHandle}`
   );
   const data = await res.json();
-  return humps.camelizeKeys(data);
+  return data.id ? humps.camelizeKeys(data) : null;
 };
 
 const getTagMappings = async (blogHandle) => {
@@ -172,8 +184,16 @@ Index.getInitialProps = async function ({
   query: { blogHandle, articleHandle },
 }) {
   const navigations = await getNavigations();
-  const article = await getArticle(blogHandle, articleHandle);
+  let article = await getArticle(blogHandle, articleHandle);
   const tagMappings = await getTagMappings(blogHandle);
+
+  if (!article) {
+    return {
+      canonicalUrl: `https://www.100percentpure.com/blogs/${blogHandle}/${articleHandle}`,
+      article: emptyArticle,
+      navigations,
+    };
+  }
 
   article.tags = parseTags(article, tagMappings);
   article.relatedArticles = [];

@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+import {articlesCollection, blogsCollection} from "../../../shared/constants";
 
 const client = new MongoClient(process.env.DB_URI, {
   useNewUrlParser: true,
@@ -14,20 +15,20 @@ export default async (req, res) => {
 
     const db = client.db(process.env.DB_NAME);
 
-    const blog = await db.collection('blogs').findOne({ handle: blogHandle });
+    const blog = await db.collection(blogsCollection).findOne({ handle: blogHandle });
     if (blog == null) {
       res.status(404).json(null);
       return;
     }
 
-    const article = await db.collection('articles').findOne({ blog_id: blog.id, handle: articleHandle });
+    const article = await db.collection(articlesCollection).findOne({ blog_id: blog.id, handle: articleHandle });
     if (article == null) {
       res.status(404).json(null);
       return;
     }
 
     // Update
-    await db.collection('articles').findOneAndUpdate({ blog_id: blog.id, handle: articleHandle }, { $set: {  }}, { upsert: false });
+    await db.collection(articlesCollection).findOneAndUpdate({ blog_id: blog.id, handle: articleHandle }, { $set: {  }}, { upsert: false });
 
     res.status(200).json(null);
     return;
