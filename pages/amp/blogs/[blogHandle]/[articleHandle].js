@@ -95,6 +95,7 @@ const Index = (props) => {
         <title>{props.article.title}</title>
         <link rel="canonical" href={props.canonicalUrl} />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <script type="text/javascript" src="/static/wknd.js"></script>
       </Head>
       <article className="grid__item large--one-whole">
         <header className="blog-header section-header">
