@@ -7,6 +7,7 @@ const withSass = require('@zeit/next-sass');
 const apiKey =  JSON.stringify(process.env.SHOPIFY_API_KEY);
 
 module.exports = withCSS(withSass({
+  crossOrigin: 'anonymous',
   webpack: (config) => {
     const env = { API_KEY: apiKey };
     config.plugins.push(new webpack.DefinePlugin(env));
@@ -14,5 +15,15 @@ module.exports = withCSS(withSass({
     config.resolve.alias['~'] = path.resolve(__dirname);
 
     return config;
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
+      },
+    ]
   },
 }));
