@@ -95,7 +95,7 @@ const Index = (props) => {
         <title>{props.article.title}</title>
         <link rel="canonical" href={props.canonicalUrl} />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <amp-script src="https://amp.puritycosmetics.com/static/wknd.js"></amp-script>
+        <amp-script src="https://cdn.shopify.com/s/files/1/0648/1955/files/wknd.js?v=1681485614"></amp-script>
       </Head>
       <article className="grid__item large--one-whole">
         <header className="blog-header section-header">

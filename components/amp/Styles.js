@@ -185,7 +185,7 @@ export default function Layout({ children }) {
         @font-face {
             font-family: 'Avenir Next Regular';
             src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-Regular.eot?v=5819296855032654131");
-            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-Regular.eot?v=5819296855032654131#iefix") format("embedded-opentype"), url("https://amp.puritycosmetics.com/AvenirNext-Regular.woff?v=13873746074351927337") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-Regular.ttf?613130") format("truetype");
+            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-Regular.eot?v=5819296855032654131#iefix") format("embedded-opentype"), url("https://cdn.shopify.com/s/files/1/0648/1955/files/AvenirNext-Regular.woff?v=1681485609") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-Regular.ttf?613130") format("truetype");
             font-weight: 100;
             font-style: normal;
             font-display: swap
@@ -194,7 +194,7 @@ export default function Layout({ children }) {
         @font-face {
             font-family: 'Avenir Next Demi';
             src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.eot?v=17062572588302327893");
-            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.eot?v=17062572588302327893#iefix") format("embedded-opentype"), url("https://amp.puritycosmetics.com/AvenirNext-DemiBold.woff2?v=12146958317600131592") format("woff2"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.woff?v=7506880630176634936") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.ttf?v=11980951721996759281") format("truetype"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.svg?v=10414489086591773921#AvenirNext-DemiBold") format("svg");
+            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.eot?v=17062572588302327893#iefix") format("embedded-opentype"), url("https://cdn.shopify.com/s/files/1/0648/1955/files/AvenirNext-DemiBold.woff2?v=1681485609") format("woff2"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.woff?v=7506880630176634936") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.ttf?v=11980951721996759281") format("truetype"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/AvenirNext-DemiBold.svg?v=10414489086591773921#AvenirNext-DemiBold") format("svg");
             font-weight: 100;
             font-style: normal;
             font-display: swap
@@ -203,7 +203,7 @@ export default function Layout({ children }) {
         @font-face {
             font-family: 'icons';
             src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.eot?v=17878346325120579912");
-            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.eot?v=17878346325120579912#iefix") format("embedded-opentype"), url("https://amp.puritycosmetics.com/icons.woff?v=15139035312530068585") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.ttf?v=7804150951971959725") format("truetype"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.svg?v=11057981606795097262#timber-icons") format("svg");
+            src: url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.eot?v=17878346325120579912#iefix") format("embedded-opentype"), url("https://cdn.shopify.com/s/files/1/0648/1955/files/icons_2d3c1898-b28f-462c-b97e-edd4f93ebdfb.woff?v=1681485609") format("woff"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.ttf?v=7804150951971959725") format("truetype"), url("//cdn.shopify.com/s/files/1/0648/1955/t/1046/assets/icons.svg?v=11057981606795097262#timber-icons") format("svg");
             font-weight: normal;
             font-style: normal;
             font-display: swap
