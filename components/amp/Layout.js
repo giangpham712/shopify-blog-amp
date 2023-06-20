@@ -45,6 +45,9 @@ export default function Layout({ children, navigations }) {
         <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
         <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
         <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+
+        <script async="" src="https://cdn.shopify.com/s/files/1/0648/1955/files/popup-script.js?v=1687194598"></script>
+
       </Head>
       <amp-analytics type="googleanalytics" id="analytics-ga">
         <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(gaJson)}}></script>
